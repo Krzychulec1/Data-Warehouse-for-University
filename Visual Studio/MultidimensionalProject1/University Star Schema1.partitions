@@ -1,0 +1,448 @@
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="4c901f0f-e0ed-4762-a08f-d926fc846210" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>University Star Schema1</ID>
+  <MeasureGroups>
+    <MeasureGroup>
+      <ID>F Recruitment</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="9e4e64fc-6900-4e96-98ec-153ee599171f">
+          <ID>F Recruitment</ID>
+          <Name>F Recruitment</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="745ceeff-abd4-4f00-b22a-c46023a18a76">
+            <DataSourceViewID>University Star Schema1</DataSourceViewID>
+            <TableID>dbo_F_recruitment</TableID>
+          </Source>
+          <StorageMode>Holap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+          <ProactiveCaching dwd:design-time-name="8da8629b-ee8f-453c-a2fb-152a270b1ba6">
+            <SilenceInterval>PT0S</SilenceInterval>
+            <Latency>PT0S</Latency>
+            <SilenceOverrideInterval>-PT1S</SilenceOverrideInterval>
+            <ForceRebuildInterval>-PT1S</ForceRebuildInterval>
+            <Enabled>true</Enabled>
+            <AggregationStorage>MolapOnly</AggregationStorage>
+            <Source xsi:type="ProactiveCachingInheritedBinding" dwd:design-time-name="2e71c127-718b-432b-a5e2-93bc3685c1dd">
+              <NotificationTechnique>Server</NotificationTechnique>
+            </Source>
+          </ProactiveCaching>
+          <EstimatedRows>601551</EstimatedRows>
+          <AggregationDesignID>AggregationDesign 1</AggregationDesignID>
+        </Partition>
+      </Partitions>
+      <AggregationDesigns>
+        <AggregationDesign>
+          <ID>AggregationDesign</ID>
+          <Name>AggregationDesign</Name>
+          <CreatedTimestamp>2023-05-30T19:42:46.86Z</CreatedTimestamp>
+          <LastSchemaUpdate>2023-05-30T19:42:46.86Z</LastSchemaUpdate>
+          <EstimatedRows>601551</EstimatedRows>
+          <Dimensions>
+            <Dimension>
+              <CubeDimensionID>Dim Misc</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Misc ID</AttributeID>
+                  <EstimatedCount>5</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Most Crowded Semester</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Least Crowded Semester</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Semester</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Semester ID</AttributeID>
+                  <EstimatedCount>146</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Semester Year</AttributeID>
+                  <EstimatedCount>74</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Season</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Season No</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Course</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Course ID</AttributeID>
+                  <EstimatedCount>46</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is In English</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Course Name</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Student</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Student ID</AttributeID>
+                  <EstimatedCount>200000</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Nationality</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is Erasmus</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is IZP</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is From Europe</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>PESEL</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>SC Dis Current</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Scholarship</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>SC Dstartdate</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>SC Denddate</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Department</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Department ID</AttributeID>
+                  <EstimatedCount>9</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Renovated Building</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Congestion</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Has Library</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Gastronomy</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Student Organization</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Classrooms With Computers</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+          </Dimensions>
+          <Aggregations>
+            <Aggregation>
+              <ID>Aggregation 0</ID>
+              <Name>Aggregation 0</Name>
+              <Dimensions>
+                <Dimension>
+                  <CubeDimensionID>Dim Misc</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Misc ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Semester</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Semester ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Course</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Student</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Department</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Department ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+              </Dimensions>
+            </Aggregation>
+            <Aggregation>
+              <ID>Aggregation 1</ID>
+              <Name>Aggregation 1</Name>
+              <Dimensions>
+                <Dimension>
+                  <CubeDimensionID>Dim Misc</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Semester</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Semester ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Course</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Course ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Student</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Department</CubeDimensionID>
+                </Dimension>
+              </Dimensions>
+            </Aggregation>
+          </Aggregations>
+        </AggregationDesign>
+        <AggregationDesign>
+          <ID>AggregationDesign 1</ID>
+          <Name>AggregationDesign 1</Name>
+          <CreatedTimestamp>2023-05-30T19:45:30.636667Z</CreatedTimestamp>
+          <LastSchemaUpdate>2023-05-30T19:45:30.636667Z</LastSchemaUpdate>
+          <EstimatedRows>601551</EstimatedRows>
+          <Dimensions>
+            <Dimension>
+              <CubeDimensionID>Dim Misc</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Misc ID</AttributeID>
+                  <EstimatedCount>5</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Most Crowded Semester</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Least Crowded Semester</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Semester</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Semester ID</AttributeID>
+                  <EstimatedCount>146</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Semester Year</AttributeID>
+                  <EstimatedCount>74</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Season</AttributeID>
+                  <EstimatedCount>3</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Season No</AttributeID>
+                  <EstimatedCount>3</EstimatedCount>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Course</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Course ID</AttributeID>
+                  <EstimatedCount>46</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is In English</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Course Name</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Student</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Student ID</AttributeID>
+                  <EstimatedCount>200000</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Nationality</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is Erasmus</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is IZP</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Is From Europe</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>PESEL</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>SC Dis Current</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Scholarship</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>SC Dstartdate</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>SC Denddate</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+            <Dimension>
+              <CubeDimensionID>Dim Department</CubeDimensionID>
+              <Attributes>
+                <Attribute>
+                  <AttributeID>Department ID</AttributeID>
+                  <EstimatedCount>9</EstimatedCount>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Renovated Building</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Congestion</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Has Library</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Gastronomy</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Student Organization</AttributeID>
+                </Attribute>
+                <Attribute>
+                  <AttributeID>Classrooms With Computers</AttributeID>
+                </Attribute>
+              </Attributes>
+            </Dimension>
+          </Dimensions>
+          <Aggregations>
+            <Aggregation>
+              <ID>Aggregation 0</ID>
+              <Name>Aggregation 0</Name>
+              <Dimensions>
+                <Dimension>
+                  <CubeDimensionID>Dim Misc</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Misc ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Semester</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Semester ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Course</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Student</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Department</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Department ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+              </Dimensions>
+            </Aggregation>
+            <Aggregation>
+              <ID>Aggregation 1</ID>
+              <Name>Aggregation 1</Name>
+              <Dimensions>
+                <Dimension>
+                  <CubeDimensionID>Dim Misc</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Semester</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Semester ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Course</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Course ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Student</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Department</CubeDimensionID>
+                </Dimension>
+              </Dimensions>
+            </Aggregation>
+            <Aggregation>
+              <ID>Aggregation 2</ID>
+              <Name>Aggregation 2</Name>
+              <Dimensions>
+                <Dimension>
+                  <CubeDimensionID>Dim Misc</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Semester</CubeDimensionID>
+                  <Attributes>
+                    <Attribute>
+                      <AttributeID>Semester ID</AttributeID>
+                    </Attribute>
+                  </Attributes>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Course</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Student</CubeDimensionID>
+                </Dimension>
+                <Dimension>
+                  <CubeDimensionID>Dim Department</CubeDimensionID>
+                </Dimension>
+              </Dimensions>
+            </Aggregation>
+          </Aggregations>
+        </AggregationDesign>
+      </AggregationDesigns>
+    </MeasureGroup>
+  </MeasureGroups>
+</Cube>
