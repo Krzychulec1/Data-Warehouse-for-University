@@ -1,0 +1,165 @@
+Sub CheckMDX()
+      
+Dim pvtTable As PivotTable
+Dim fso As Object
+Dim Fileout As Object
+Set pvtTable = ActiveSheet.PivotTables(1)
+Set fso = CreateObject("Scripting.FileSystemObject")
+Set Fileout = fso.CreateTextFile("C:\Users\jezna\OneDrive\Pulpi\MDXOutput.txt", True, True)
+Fileout.Write pvtTable.MDX
+Fileout.Close
+ 
+End Sub
+
+
+---1---
+Show what percentage of all students, in the year with the highest number of students, were erasmus and foreign ones.
+
+WITH MEMBER [Measures].[Recruitment Percentage] AS
+  ROUND(
+    DIVIDE(
+      [Measures].[F Recruitment Count],
+      SUM([Dim Student].[Is Erasmus].[Is Erasmus].ALLMEMBERS * [Dim Misc].[Most Crowded Semester].[Most Crowded Semester].&[1], [Measures].[F Recruitment Count])
+    ) * 100,
+    2
+  )
+SELECT
+  NON EMPTY {[Measures].[Recruitment Percentage]} ON COLUMNS,
+  NON EMPTY {(
+    [Dim Student].[Is Erasmus].[Is Erasmus].ALLMEMBERS,
+    [Dim Misc].[Most Crowded Semester].[Most Crowded Semester].&[1]
+  )} DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS
+FROM [University Star Schema1]
+CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+
+---2---
+
+Show student growth at the courses conducted in english between the year 2011 winter and 2012 summer and for the whole university during the same time.
+
+WITH
+  MEMBER [Dim Course].[Is In English].[All].[Whole university] AS
+    SUM([Dim Course].[Is In English].[Is In English].ALLMEMBERS, [Measures].[Difference in students])
+SELECT
+  NON EMPTY { [Measures].[Difference in students] } ON COLUMNS,
+  NON EMPTY { [Dim Course].[Is In English].[Is In English].ALLMEMBERS } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS
+FROM (
+  SELECT [Dim Course].[Is In English].[Is In English].ALLMEMBERS ON 0
+  FROM [University Star Schema1]
+)
+CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---3---
+
+Show what percentage of total recruited students are those from Erasmus and whether they have a scholarship. Do the same for non-Erasmus students in the 2011 winter.
+
+WITH MEMBER [Measures].[Recruitment Percentage] AS
+  IIF(
+    [Measures].[F Recruitment Count] = 0,
+    NULL,
+    ROUND(
+      DIVIDE(
+        [Measures].[F Recruitment Count],
+        SUM([Dim Student].[Is Erasmus].[Is Erasmus].ALLMEMBERS * [Dim Student].[Scholarship].[Scholarship].ALLMEMBERS * [Dim Semester].[SemesterHierarchy].[Semester Year].&[2011].&[Winter], [Measures].[F Recruitment Count])
+      ) * 100,
+      2
+    )
+  )
+SELECT
+  NON EMPTY {[Measures].[Recruitment Percentage]} ON COLUMNS,
+  NON EMPTY {(
+    [Dim Student].[Is Erasmus].[Is Erasmus].ALLMEMBERS,
+    [Dim Student].[Scholarship].[Scholarship].ALLMEMBERS,
+    [Dim Semester].[SemesterHierarchy].[Semester Year].&[2011].&[Winter]
+  )} DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS
+FROM [University Star Schema1]
+CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---4---
+
+Show what percentage of all students, in the year with the lowest number of students, were not from Europe.
+
+WITH MEMBER [Measures].[Recruitment Percentage] AS
+  ROUND(
+    DIVIDE(
+      [Measures].[F Recruitment Count],
+      SUM([Dim Misc].[Least Crowded Semester].[Least Crowded Semester].&[1] * [Dim Student].[Is From Europe].[Is From Europe].ALLMEMBERS, [Measures].[F Recruitment Count])
+    ) * 100,
+    2
+  )
+SELECT
+  NON EMPTY {[Measures].[Recruitment Percentage]} ON COLUMNS,
+  NON EMPTY {(
+    [Dim Misc].[Least Crowded Semester].[Least Crowded Semester].&[1],
+    [Dim Student].[Is From Europe].[Is From Europe].ALLMEMBERS
+  )} DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS
+FROM [University Star Schema1]
+CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---5---
+
+Show student growth of the IZP students between the year 2011 winter and 2012 summer.
+
+ SELECT NON EMPTY { [Measures].[Difference in students] } ON COLUMNS, NON EMPTY { ([Dim Student].[Is IZP].[Is IZP].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [University Star Schema1] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---6---
+
+Show average student growth between departments in which over 60% of buildings were last renovated after 2010 with the ones that do not satisfy that condition. Growth is calculated from the year 2011 winter to 2012 summer.
+
+ SELECT NON EMPTY { [Measures].[Difference in students] } ON COLUMNS, NON EMPTY { ([Dim Department].[Gastronomy].[Gastronomy].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [University Star Schema1] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---7---
+
+Show a difference in growth of students between departments with and without any Gastronomy between the year 2011 winter and 2012 summer.
+
+ SELECT NON EMPTY { [Measures].[Difference in students] } ON COLUMNS, NON EMPTY { ([Dim Department].[Gastronomy].[Gastronomy].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [University Star Schema1] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---8---
+
+Show the average congestion (capacity divided by area) on a given department and growth in the number of the students there. Growth calculated from 2011 winter to 2012 summer.
+
+ SELECT NON EMPTY { [Measures].[Difference in students] } ON COLUMNS, NON EMPTY { ([Dim Department].[Congestion].[Congestion].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [University Star Schema1] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---9---
+
+Show the list of all departments, whether they have a library or not, number of restaurants and number of student organizations located at those departments. For every single department, show the growth in the number of students between the year 2011 winter and 2012 summer.
+
+ SELECT NON EMPTY { [Measures].[Difference in students] } ON COLUMNS, NON EMPTY { ([Dim Department].[Department ID].[Department ID].ALLMEMBERS * [Dim Department].[Gastronomy].[Gastronomy].ALLMEMBERS * [Dim Department].[Has Library].[Has Library].ALLMEMBERS * [Dim Department].[Student Organization].[Student Organization].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [University Star Schema1] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---10---
+
+Show the percentage of classrooms with computers in the buildings of a given department and their growth in the number of recruited students at those departments between the year 2011 winter and 2012 summer?
+
+ SELECT NON EMPTY { [Measures].[Difference in students] } ON COLUMNS, NON EMPTY { ([Dim Department].[Classrooms With Computers].[Classrooms With Computers].ALLMEMBERS ) } DIMENSION PROPERTIES MEMBER_CAPTION, MEMBER_UNIQUE_NAME ON ROWS FROM [University Star Schema1] CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+
+---KPI1--- 1%
+ SELECT NON EMPTY { KPIValue("Student Growth - for presenting"), KPIGoal("Student Growth - for presenting"), KPIStatus("Student Growth - for presenting") } ON COLUMNS FROM ( SELECT ( { [Dim Semester].[SemesterHierarchy].[Semester Year].&[1997].&[Winter] } ) ON COLUMNS FROM [University Star Schema1]) WHERE ( [Dim Semester].[SemesterHierarchy].[Semester Year].&[1997].&[Winter] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+---KPI1--- 2,5%
+ SELECT NON EMPTY { KPIValue("Student Growth"), KPIGoal("Student Growth"), KPIStatus("Student Growth") } ON COLUMNS FROM ( SELECT ( { [Dim Semester].[SemesterHierarchy].[Semester Year].&[1997].&[Winter] } ) ON COLUMNS FROM [University Star Schema1]) WHERE ( [Dim Semester].[SemesterHierarchy].[Semester Year].&[1997].&[Winter] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
+
+
+---KPI2--- mediana
+
+ SELECT NON EMPTY { KPIValue("Student increase - median"), KPIGoal("Student increase - median"), KPIStatus("Student increase - median") } ON COLUMNS FROM ( SELECT ( { [Dim Semester].[SemesterHierarchy].[Semester Year].&[2006].&[Summer] } ) ON COLUMNS FROM [University Star Schema1]) WHERE ( [Dim Semester].[SemesterHierarchy].[Semester Year].&[2006].&[Summer] ) CELL PROPERTIES VALUE, BACK_COLOR, FORE_COLOR, FORMATTED_VALUE, FORMAT_STRING, FONT_NAME, FONT_SIZE, FONT_FLAGS
