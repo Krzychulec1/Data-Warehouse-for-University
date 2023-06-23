@@ -152,7 +152,6 @@ def input_gastro_name(i):
 
 
 # student
-'''
 with open('Names.bulk', 'w') as file:
     for i in range(0, 200000):
        file.write(input_student_id(i+1))
@@ -324,7 +323,6 @@ with open('Classes.bulk', 'w') as file:
         file.write('\n')  
 
 
-'''
 k = 0
 with open('IsOnCourseSemester.bulk', 'w') as file:
     for i in range(1, 200001):
