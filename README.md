@@ -8,7 +8,7 @@ department after the start of each semester. The university is considered
 successful when there is a rising trend for both metrics at a level not
 lower than 2.5% per semester.
 
-##Project contains:
+## Project contains:
   * [Data Warehouse](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Warehouse) and [Source Database](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Datasource%20Data%20Base) design and implmentnation  
   * [MDX queries and KPI](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/MDX%20Queries/Queries.txt)  
   * [ETL process](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/ETL) written in T-SQL  
