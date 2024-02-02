@@ -16,4 +16,6 @@ lower than 2.5% per semester.
   * [SCD2 implementation](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/ETL/ETLFactInsert.sql)  
   * [Visual Studio project](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Visual%20Studio/Multidimensional%20Project) Cube with hierarchies  
   * [Power BI dashboards](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Power%20BI) to represent the data  
-  * [Project reports](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Project%20Reports) and [DW optimization report](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Project%20Reports/Optimization.pdf)    
+  * [Project reports](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Project%20Reports) and [DW optimization report](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Project%20Reports/Optimization.pdf)
+
+    (https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Power%20BI/Screenshot_10.png) 
