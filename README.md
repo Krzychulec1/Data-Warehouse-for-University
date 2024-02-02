@@ -18,7 +18,7 @@ lower than 2.5% per semester.
   * [Power BI dashboards](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Power%20BI) to represent the data  
   * [Project reports](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Project%20Reports) and [DW optimization report](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Project%20Reports/Optimization.pdf)
 
-## exemplary Power BI Dashboard:  
+## Exemplary Power BI Dashboard:  
 .
     ![image](https://github.com/Krzychulec1/Data-Warehouse-for-University/assets/102033629/30f6e56f-93bd-4e5d-a44e-41848cd7ef3a)
 
