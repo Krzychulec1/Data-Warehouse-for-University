@@ -9,11 +9,11 @@ successful when there is a rising trend for both metrics at a level not
 lower than 2.5% per semester.
 
 ##Project contains:
-  > [Data Warehouse](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Warehouse) and [Source Database](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Datasource%20Data%20Base) design and implmentnation
-  > [MDX queries and KPI](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/MDX%20Queries/Queries.txt)
-  > [ETL process](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/ETL) written in T-SQL
-  > [Fake data generators](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Generator/main.py) in Python
-  > [SCD2 implementation](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/ETL/ETLFactInsert.sql)
-  > [Visual Studio project](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Visual%20Studio/Multidimensional%20Project) Cube with hierarchies
-  > [Power BI dashboards](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Power%20BI) to represent the data
-  > [Project reports](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Project%20Reports) and [DW optimization report](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Project%20Reports/Optimization.pdf)  
+  > [Data Warehouse](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Warehouse) and [Source Database](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Datasource%20Data%20Base) design and implmentnation  
+  > [MDX queries and KPI](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/MDX%20Queries/Queries.txt)  
+  > [ETL process](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/ETL) written in T-SQL  
+  > [Fake data generators](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Generator/main.py) in Python  
+  > [SCD2 implementation](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/ETL/ETLFactInsert.sql)  
+  > [Visual Studio project](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Visual%20Studio/Multidimensional%20Project) Cube with hierarchies  
+  > [Power BI dashboards](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Power%20BI) to represent the data  
+  > [Project reports](https://github.com/Krzychulec1/Data-Warehouse-for-University/tree/main/Project%20Reports) and [DW optimization report](https://github.com/Krzychulec1/Data-Warehouse-for-University/blob/main/Project%20Reports/Optimization.pdf)    
